@@ -5,5 +5,5 @@ class Solution:
             a = pre.next
             b = a.next
             pre.next,b.next,a.next = b,a,b.next
-            per = a
+            pre = a
         return self.next
