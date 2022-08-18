@@ -1,34 +1,17 @@
+from collections import Counter
 class Solution:
-    def generateMatrix(self,n):
-        res = [[0 for i in range(n)] for i in range(n)]
-        num = 1
-        left,right = 0,n
-        top,bottom = 0,n
-        while left<right and top<bottom:
-            for i in range(left,right):
-                res[top][i] = num
-                num += 1
-            top += 1
-            for i in range(top,bottom):
-                res[i][right-1] = num
-                num += 1
-            right -= 1
-
-            if not (left<right and top<bottom):
-                break
-
-            for i in range(right-1,left-1,-1):
-                res[bottom-1][i] = num
-                num += 1
-            bottom -= 1
-            for i in range(bottom-1,top-1,-1):
-                res[i][left] = num
-                num += 1
-            left += 1
-
+    def minSetSize(self,arr):
+        res = 0
+        ln,set_sum = len(arr),0
+        for j in sorted(Counter(arr).values(), reverse = True):
+            if set_sum<ln/2:
+                set_sum += j
+                res += 1
         return res
 
 a = Solution()
-print(a.generateMatrix(1))
+print(a.minSetSize([1,2,3,4,5,6,7,8,9,10]))
+print(a.minSetSize([7,7,7,7,7,7]))
+print(a.minSetSize([5,5,5,2,7,3,3,3,3]))
 # print(a.generateMatrix())
 # print(a.generateMatrix())
