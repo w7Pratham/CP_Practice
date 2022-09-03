@@ -1,3 +1,5 @@
+#https://assets.leetcode.com/users/andvary/image_1556551007.png
+
 class Solution:
     def preOrder(self, root):
         return [root.val] + self.preOrder(root.left) + self.preOrder(root.right) if root else []
